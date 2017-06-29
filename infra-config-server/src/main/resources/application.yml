@@ -9,3 +9,7 @@ spring:
           uri: file://${user.home}/kudos/workshop/config-repo/
 server:
   port: 8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
