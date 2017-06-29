@@ -6,6 +6,10 @@ spring:
       discovery:
         enabled: true
         service-id: infra-config-server
+
+server:
+  port: 8081
+
 eureka:
   client:
     service-url:

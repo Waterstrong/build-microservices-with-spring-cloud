@@ -1,10 +1,8 @@
 spring:
   application:
-    name: bff-test
-
+    name: infra-zipkin
 server:
-  port: 8080
-
+  port: 9411
 eureka:
   client:
     service-url:
