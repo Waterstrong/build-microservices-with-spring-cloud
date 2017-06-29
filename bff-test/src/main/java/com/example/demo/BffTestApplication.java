@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,13 +33,17 @@ public class BffTestApplication {
         return new RestTemplate();
     }
 
-//    @HystrixCommand
+    @HystrixCommand(fallbackMethod = "categoryFallback")
     @RequestMapping("/categoryNames")
     public List<String> categoryNames() {
         List<Category> categories = restTemplate().exchange(GET_CATEGORY_URL, HttpMethod.GET, HttpEntity.EMPTY, new ParameterizedTypeReference<List<Category>>() {
         }).getBody();
 //		restTemplate().getForEntity(GET_CATEGORY_URL, ).getBody();
         return categories.stream().map(Category::getCategoryName).collect(Collectors.toList());
+    }
+
+    private List<String> categoryFallback() {
+        return Collections.emptyList();
     }
 
     public static void main(String[] args) {

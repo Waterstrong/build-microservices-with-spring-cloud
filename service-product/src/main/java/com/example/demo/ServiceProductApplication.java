@@ -33,6 +33,11 @@ public class ServiceProductApplication {
     }
     @RequestMapping("/categories")
     List<Category> categories() {
+        try {
+            Thread.sleep(Integer.MAX_VALUE);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return Arrays.asList(
                 new Category(1, "T-Shirt"),
                 new Category(2, "Mobile Phone"),
